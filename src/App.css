@@ -1,0 +1,260 @@
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f6f8fa;
+  margin: 0;
+  color: #222;
+}
+
+.app-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 2rem;
+}
+
+h1 {
+  text-align: center;
+  color: #2d7cf7;
+}
+
+.overview {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.goal-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.goal-card {
+  background: #f9fafb;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  padding: 1.5rem;
+  position: relative;
+}
+.goal-card.completed {
+  border: 2px solid #4caf50;
+}
+.goal-card.overdue {
+  border: 2px solid #e53935;
+}
+.goal-card .progress-bar {
+  background: #e0e0e0;
+  border-radius: 6px;
+  height: 12px;
+  margin: 10px 0;
+  width: 100%;
+  overflow: hidden;
+}
+.goal-card .progress {
+  background: #2d7cf7;
+  height: 100%;
+  transition: width 0.4s;
+}
+.goal-card .warning {
+  color: #e67e22;
+  font-weight: bold;
+}
+.goal-card .overdue {
+  color: #e53935;
+  font-weight: bold;
+}
+.goal-card button {
+  margin-right: 8px;
+  margin-top: 8px;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 4px;
+  background: #2d7cf7;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+.goal-card button:last-child {
+  background: #4caf50;
+}
+
+.goal-form, .deposit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2rem 0;
+  background: #f4f7fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+.goal-form input, .deposit-form input, .deposit-form select {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+.goal-form button, .deposit-form button {
+  align-self: flex-start;
+  background: #2d7cf7;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f6f8fa;
+  margin: 0;
+  color: #222;
+}
+
+.app-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 2rem;
+}
+
+h1 {
+  text-align: center;
+  color: #2d7cf7;
+}
+
+.overview {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.goal-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.goal-card {
+  background: #f9fafb;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  padding: 1.5rem;
+  position: relative;
+}
+.goal-card.completed {
+  border: 2px solid #4caf50;
+}
+.goal-card.overdue {
+  border: 2px solid #e53935;
+}
+.goal-card .progress-bar {
+  background: #e0e0e0;
+  border-radius: 6px;
+  height: 12px;
+  margin: 10px 0;
+  width: 100%;
+  overflow: hidden;
+}
+.goal-card .progress {
+  background: #2d7cf7;
+  height: 100%;
+  transition: width 0.4s;
+}
+.goal-card .warning {
+  color: #e67e22;
+  font-weight: bold;
+}
+.goal-card .overdue {
+  color: #e53935;
+  font-weight: bold;
+}
+.goal-card button {
+  margin-right: 8px;
+  margin-top: 8px;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 4px;
+  background: #2d7cf7;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+.goal-card button:last-child {
+  background: #4caf50;
+}
+
+.goal-form, .deposit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2rem 0;
+  background: #f4f7fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+.goal-form input, .deposit-form input, .deposit-form select {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+.goal-form button, .deposit-form button {
+  align-self: flex-start;
+  background: #2d7cf7;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
