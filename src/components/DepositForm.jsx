@@ -20,7 +20,7 @@ const DepositForm = ({ goals, onDeposit }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>💰 Make a Deposit</h2>
+      <h2>Make a Deposit</h2>
       <select value={selectedGoalId} onChange={(e) => setSelectedGoalId(e.target.value)}>
         <option value="">-- Choose a Goal --</option>
         {goals.map(goal => (

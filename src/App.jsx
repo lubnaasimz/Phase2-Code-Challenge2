@@ -6,7 +6,7 @@ function App() {
   const [goals, setGoals] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/goals")
+    fetch("http://localhost:3001/goals")
       .then(res => res.json())
       .then(data => setGoals(data));
   }, []);
@@ -18,7 +18,7 @@ function App() {
       saved: goalToUpdate.saved + amount,
     };
 
-    fetch(`http://localhost:3000/goals/${goalId}`, {
+    fetch(`http://localhost:3001/goals/${goalId}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ saved: updatedGoal.saved })
@@ -34,7 +34,7 @@ function App() {
 
   return (
     <div style={{ padding: "20px" }}>
-      <h1>🏦 Smart Goal Planner</h1>
+      <h1> Smart Goal Planner</h1>
       <DepositForm goals={goals} onDeposit={handleDeposit} />
       <GoalList goals={goals} />
     </div>

@@ -4,7 +4,7 @@ import React from 'react';
 const GoalList = ({ goals }) => {
   return (
     <div style={{ maxWidth: '900px', margin: '0 auto', padding: '24px' }}>
-      <h2 style={{ fontWeight: 700, fontSize: '2rem', marginBottom: '24px', color: '#2d3748' }}>🎯 Your Goals</h2>
+      <h2 style={{ fontWeight: 700, fontSize: '2rem', marginBottom: '24px', color: '#2d3748' }}> Your Goals</h2>
       {goals.length === 0 ? (
         <p style={{ color: '#718096', fontSize: '1.1rem' }}>No goals available.</p>
       ) : (
