@@ -1,0 +1,38 @@
+.goal-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.goal-card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #2c3e50;
+}
+.goal-card .progress-bar {
+  background-color: #eee;
+  border-radius: 6px;
+  height: 10px;
+  margin-top: 8px;
+  position: relative;
+}
+.goal-card .progress {
+  background-color: #2ecc71;
+  height: 100%;
+  border-radius: 6px;
+}
+.goal-card .meta {
+  font-size: 0.9rem;
+  color: #555;
+}
+.goal-card .actions button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 8px;
+}

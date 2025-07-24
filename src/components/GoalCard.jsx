@@ -1,40 +1,34 @@
-import React from 'react';
+import React from "react";
+import './GoalCard.css';
 
-function getDaysLeft(deadline) {
-  const now = new Date();
-  const end = new Date(deadline);
-  return Math.ceil((end - now) / (1000 * 60 * 60 * 24));
-}
-
-const GoalCard = ({ goal, onEdit, onDelete, onDeposit }) => {
-  const progress = Math.min(100, (goal.savedAmount / goal.targetAmount) * 100);
-  const daysLeft = getDaysLeft(goal.deadline);
-  const isCompleted = goal.savedAmount >= goal.targetAmount;
-  const isOverdue = !isCompleted && daysLeft < 0;
-  const isWarning = !isCompleted && daysLeft <= 30 && daysLeft > 0;
+function GoalCard({ goal, onUpdate, onDelete }) {
+  const { id, name, savedAmount, targetAmount, deadline, category } = goal;
+  const percent = Math.min((savedAmount / targetAmount) * 100, 100);
+  const remaining = targetAmount - savedAmount;
+  const timeLeft = Math.ceil((new Date(deadline) - new Date()) / (1000 * 60 * 60 * 24));
+  const isCompleted = savedAmount >= targetAmount;
+  const overdue = new Date(deadline) < new Date() && !isCompleted;
+  const warning = timeLeft <= 30 && !isCompleted;
 
   return (
-    <div className={`goal-card${isCompleted ? ' completed' : ''}${isOverdue ? ' overdue' : ''}`}> 
-      <h3>{goal.name}</h3>
-      <div><strong>ID:</strong> {goal.id}</div>
-      <div><strong>Category:</strong> {goal.category}</div>
-      <div><strong>Target Amount:</strong> ${goal.targetAmount.toLocaleString()}</div>
-      <div><strong>Saved Amount:</strong> ${goal.savedAmount.toLocaleString()}</div>
-      <div><strong>Remaining:</strong> ${Math.max(goal.targetAmount - goal.savedAmount, 0).toLocaleString()}</div>
-      <div><strong>Deadline:</strong> {goal.deadline}</div>
-      <div><strong>Created At:</strong> {goal.createdAt}</div>
-      <div><strong>Days Left:</strong> {daysLeft < 0 ? 'Deadline Passed' : daysLeft}</div>
-      {isWarning && <div className="warning">Less than 30 days left!</div>}
-      {isOverdue && <div className="overdue"> Overdue</div>}
-      {isCompleted && <div className="completed"> Goal Completed!</div>}
-      <div className="progress-bar">
-        <div className="progress" style={{ width: `${progress}%` }}></div>
-      </div>
-      <button onClick={() => onEdit(goal)}>Edit</button>
-      <button onClick={() => onDelete(goal.id)}>Delete</button>
-      <button onClick={() => onDeposit(goal)}>Deposit</button>
-    </div>
+    <div className="goal-card">
+  <h3>{goal.name}</h3>
+  <p className="meta">Category: {goal.category}</p>
+  <p className="meta">Target: ${goal.targetAmount}</p>
+  <p className="meta">Saved: ${goal.savedAmount}</p>
+  <p className="meta">Remaining: ${goal.targetAmount - goal.savedAmount}</p>
+
+  <div className="progress-bar">
+    <div
+      className="progress"
+      style={{ width: `${(goal.savedAmount / goal.targetAmount) * 100}%` }}
+    ></div>
+  </div>
+</div>
+
+    
+
   );
-};
+}
 
 export default GoalCard;

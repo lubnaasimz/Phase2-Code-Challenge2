@@ -1,0 +1,29 @@
+.form-container label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.form-container input,
+.form-container select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  color: #333;
+}
+
+.form-container button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-container button:hover {
+  background-color: #2980b9;
+}

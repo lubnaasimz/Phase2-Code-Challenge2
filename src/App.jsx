@@ -1,6 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import DepositForm from './components/DepositForm';
-import GoalList from './components/GoalList';
+// App.jsx
+import React, { useEffect, useState } from "react";
+import GoalList from "./components/GoalList";
+import AddGoalForm from "./components/AddGoalForm";
+import DepositForm from "./components/DepositForm";
+import OverviewDashboard from "./components/OverviewDashboard";
+import "./App.css";
 
 function App() {
   const [goals, setGoals] = useState([]);
@@ -8,38 +12,49 @@ function App() {
   useEffect(() => {
     fetch("http://localhost:3001/goals")
       .then(res => res.json())
-      .then(data => setGoals(data));
+      .then(data => setGoals(data))
+      .catch(err => console.error("Failed to fetch goals:", err));
   }, []);
 
-  const handleDeposit = (goalId, amount) => {
-    const goalToUpdate = goals.find(goal => goal.id === parseInt(goalId));
-    const updatedGoal = {
-      ...goalToUpdate,
-      saved: goalToUpdate.saved + amount,
-    };
-
-    fetch(`http://localhost:3001/goals/${goalId}`, {
-      method: "PATCH",
+  const addGoal = (newGoal) => {
+    fetch("http://localhost:3001/goals", {
+      method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ saved: updatedGoal.saved })
+      body: JSON.stringify(newGoal),
     })
       .then(res => res.json())
-      .then((updatedGoalFromServer) => {
-        const updatedGoals = goals.map(goal =>
-          goal.id === updatedGoalFromServer.id ? updatedGoalFromServer : goal
-        );
-        setGoals(updatedGoals);
-      });
+      .then(data => setGoals([...goals, data]));
+  };
+
+  const updateGoal = (id, updatedFields) => {
+    fetch(`http://localhost:3001/goals/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updatedFields),
+    })
+      .then(res => res.json())
+      .then(updatedGoal =>
+        setGoals(goals.map(goal => goal.id === id ? updatedGoal : goal))
+      );
+  };
+
+  const deleteGoal = (id) => {
+    fetch(`http://localhost:3001/goals/${id}`, {
+      method: "DELETE",
+    }).then(() => setGoals(goals.filter(goal => goal.id !== id)));
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1> Smart Goal Planner</h1>
-      <DepositForm goals={goals} onDeposit={handleDeposit} />
-      <GoalList goals={goals} />
-    </div>
+    <main className="app-container">
+      <h1 className="app-title">Smart Goal Planner</h1>
+      <OverviewDashboard goals={goals} />
+      <div className="forms-grid">
+        <AddGoalForm onAddGoal={addGoal} />
+        <DepositForm goals={goals} onDeposit={updateGoal} />
+      </div>
+      <GoalList goals={goals} onUpdate={updateGoal} onDelete={deleteGoal} />
+    </main>
   );
 }
 
 export default App;
-
